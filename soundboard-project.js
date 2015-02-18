@@ -2,17 +2,17 @@ if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
+  Template.soundList.helpers({
+    randomSounds: function() {
+      return Sounds.find();
     }
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-       var audio = new Audio("http://mhwalkers.freevar.com/sounds/that_was_easy.wav");
+  Template.soundList.events({
+    'click button': function (event) {
+      console.log(event.target);
+      var button = event.target
+      var audio = new Audio($(button).attr('data-sound-src'));
       audio.play();
     }
   });
