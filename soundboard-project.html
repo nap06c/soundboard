@@ -5,10 +5,12 @@
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+  {{> soundList }}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="soundList">
+<p>There should be sounds here.</p>
+  {{#each randomSounds}}
+    <button data-sound-src="{{file}}">{{name}}</button>
+  {{/each}}
 </template>
